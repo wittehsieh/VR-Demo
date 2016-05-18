@@ -15,7 +15,7 @@ namespace Cameo
 		}
 
 		public List<CharacterAction> Actions;
-		public bool IsPlaying = false;
+		private bool _isPlaying = false;
 
 		private AudioSource _audioController;
 		private Animator _animator;
@@ -24,30 +24,24 @@ namespace Cameo
 		void Start () {
 			_audioController = gameObject.GetComponent<AudioSource> ();
 			_animator = gameObject.GetComponent<Animator> ();
-		}
+        }
 
-		public void PlayNextAction() {
-			if (IsPlaying) {
-				CharacterAction nextAction = Actions [Random.Range (0, Actions.Count - 1)];
-				StartCoroutine (playAction (nextAction));
-			} else {
-				Stop ();
-			}
-		}
-
-		public void Play() {
-			IsPlaying = true;
-			PlayNextAction ();
-		}
+		public void PlayNextAction()
+        {
+            CharacterAction nextAction = Actions[Random.Range(0, Actions.Count)];
+            StartCoroutine(playAction(nextAction));
+        }
 
 		public void Stop() {
 			StopAllCoroutines ();
-			IsPlaying = false;
+            _isPlaying = false;
 			_animator.SetTrigger ("S_Idle");
 		}
 
 		private IEnumerator playAction(CharacterAction action) {
-			_animator.SetTrigger (action.ActionName);
+            _isPlaying = true;
+
+            _animator.SetTrigger (action.ActionName);
 
 			if (action.Clip != null) {
 				_audioController.clip = action.Clip;
@@ -56,8 +50,20 @@ namespace Cameo
 
 			yield return new WaitForSeconds (action.During);
 
-			PlayNextAction ();
-		}
+            _isPlaying = false;
 
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyUp("space"))
+            {
+                if (_isPlaying)
+                {
+                    Stop();
+                }
+                PlayNextAction();
+            }
+        }
 	}
 }
