@@ -16,6 +16,7 @@ namespace Cameo
 		public Sprite OnKeepLookSprite;
 		public Sprite IdleSprite;
 		public Image ForegroundIcon;
+
 		private float _curLookTime = 0;
 		private bool _isFinished = false;
 
@@ -59,16 +60,28 @@ namespace Cameo
 			ProgressBar.fillAmount = _curLookTime / LookDuring;
 
 			if (_curLookTime > LookDuring) {
-				if (FinisheClip != null) {
-					AudioController.clip = FinisheClip;
-					AudioController.Play ();
-					_isFinished = true;
-				}
-				onFinishLook ();
+                StartCoroutine(BtnFinishProcess());
 			} else {
 				onKeepLook ();
 			}
 		}
+
+        private IEnumerator BtnFinishProcess()
+        {
+            float waitTime = 0;
+
+            if (FinisheClip != null)
+            {
+                AudioController.clip = FinisheClip;
+                AudioController.Play();
+                _isFinished = true;
+                waitTime = FinisheClip.length;
+            }
+            yield return new WaitForSeconds(waitTime);
+
+            onFinishLook();
+        }
+
 
 		protected virtual void onStartLook() {
 

@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cameo/Scene/demoStart.unity
   - enabled: 1
-    path: Assets/Cameo/Scene/demoDessert.unity
-  - enabled: 1
     path: Assets/Cameo/Scene/demoForest.unity
+  - enabled: 1
+    path: Assets/Cameo/Scene/demoDessert.unity
   - enabled: 1
     path: Assets/Cameo/Scene/demoCharacter1.unity

@@ -9,17 +9,14 @@ namespace Cameo{
 
         void Start()
         {
-            if(!GameSystem.Instance.GameMode)
+            if(GameSystem.Instance.GameMode)
             {
-                AnimController.SetLayerWeight(0, 1);
-                AnimController.SetLayerWeight(1, 0);
+                AnimController.SetTrigger("GameMode");
             }
             else
             {
-                AnimController.SetLayerWeight(0, 0);
-                AnimController.SetLayerWeight(1, 1);
+                AnimController.SetTrigger("FlyMode");
             }
-                
         }
 
         public void StartLevel()

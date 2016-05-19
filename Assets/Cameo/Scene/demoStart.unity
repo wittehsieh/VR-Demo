@@ -3287,6 +3287,7 @@ GameObject:
   - 4: {fileID: 1778397725}
   - 114: {fileID: 1778397724}
   - 114: {fileID: 1778397726}
+  - 114: {fileID: 1778397727}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -3331,6 +3332,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMode: 1
+--- !u!114 &1778397727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1778397723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f742580915a7e24fba996caa8314671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectList:
+  - {fileID: 161046, guid: 9108430e459f32246aa7d8eb9d2aeeab, type: 2}
 --- !u!4 &1788651948 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 64b387337361a134b9c28bc93d520798, type: 2}

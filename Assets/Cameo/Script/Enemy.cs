@@ -7,14 +7,25 @@ namespace Cameo
     {
         public int Level = 0;
         public VREnemyHitTrigger HitTrigger;
+        
+        public GameObject HitPoint;
+        public GameObject Model;
 
+        public AudioClip Appear;
+        public AudioClip Dead;
+
+        private AudioSource _audioController;
         private Transform _target;
+        private FadeObjectInOut _fadeObjectHelper;
 
         void Awake()
         {
             GameSystem.Instance.RegisterEnemy(Level, this);
-            HitTrigger.OnHitCallback += OnHit;
+            HitTrigger.gameObject.SetActive(false);
+            Model.SetActive(false);
 
+            _audioController = GetComponent<AudioSource>();
+            _fadeObjectHelper = Model.GetComponent<FadeObjectInOut>();
             GameObject targetObj = GameObject.Find("VRRayCaster");
             if (targetObj != null)
             {
@@ -40,14 +51,36 @@ namespace Cameo
         public void OnStart()
         {
             gameObject.SetActive(true);
+            StartCoroutine(playStartEffect());
+        }
+
+        private IEnumerator playStartEffect()
+        {
+            yield return new WaitForSeconds(Random.Range(0, 4));
+
+            Model.SetActive(true);
+            _fadeObjectHelper.FadeIn();
+            if(Appear != null)
+            {
+                _audioController.clip = Appear;
+                _audioController.Play();
+            }
+            
+            yield return new WaitForSeconds(1);
+            HitTrigger.gameObject.SetActive(true);
+            HitTrigger.OnHitCallback += OnHit;
         }
 
         private IEnumerator playHitEffect()
         {
-            Debug.Log("play fly effect");
+            GameObject.Destroy(HitTrigger.gameObject);
+
+            CastEffectFactory.CreateFlyEffect(0, _target.position, HitPoint.transform, 1);
             yield return new WaitForSeconds(1);
-            Debug.Log("play explosion effect");
-            yield return new WaitForSeconds(1.5f);
+            _fadeObjectHelper.FadeOut();
+            yield return new WaitForSeconds(1f);
+
+            GameSystem.Instance.OnLevelEnemyHit(Level);
 
             Destroy(gameObject);
         }

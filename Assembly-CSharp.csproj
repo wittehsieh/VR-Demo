@@ -72,11 +72,13 @@
      <Compile Include="Assets\BIG_Environment_Pack\BEP_Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\WaterBase.cs" />
      <Compile Include="Assets\BIG_Environment_Pack\BEP_Standard Assets\Water (Pro Only)\Water4\Sources\Scripts\WaterTile.cs" />
      <Compile Include="Assets\BIG_Environment_Pack\FX\Fire\Fire\FlickerLight.cs" />
-     <Compile Include="Assets\Cameo\Model\mo_hua_ye_xiao_chai\FadeObjectInOut.cs" />
+     <Compile Include="Assets\Cameo\Script\CastEffectFactory.cs" />
      <Compile Include="Assets\Cameo\Script\ChangeScene.cs" />
+     <Compile Include="Assets\Cameo\Script\EffectHandler.cs" />
      <Compile Include="Assets\Cameo\Script\Enemy.cs" />
      <Compile Include="Assets\Cameo\Script\EnemyManager.cs" />
      <Compile Include="Assets\Cameo\Script\FadeHelper.cs" />
+     <Compile Include="Assets\Cameo\Script\FadeObjectInOut.cs" />
      <Compile Include="Assets\Cameo\Script\GameSystem.cs" />
      <Compile Include="Assets\Cameo\Script\IKController.cs" />
      <Compile Include="Assets\Cameo\Script\SamuraiController.cs" />
