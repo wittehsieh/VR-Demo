@@ -552,7 +552,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -574,7 +574,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &9512852
 Animator:
   serializedVersion: 3
@@ -725,7 +725,10 @@ MonoBehaviour:
   HitPoint: {fileID: 115908}
   Model: {fileID: 140612}
   Appear: {fileID: 8300000, guid: 88a79fa65e3f02640b33c5cf8ece8ee8, type: 3}
-  Dead: {fileID: 0}
+  Dead:
+  - {fileID: 8300000, guid: 05136bb848734234390414a446d2eccd, type: 3}
+  - {fileID: 8300000, guid: bbeca79d06143934faab552d8c1e047f, type: 3}
+  - {fileID: 8300000, guid: 35c03af93ee864344938b5c78c1e8851, type: 3}
 --- !u!114 &11446802
 MonoBehaviour:
   m_ObjectHideFlags: 1

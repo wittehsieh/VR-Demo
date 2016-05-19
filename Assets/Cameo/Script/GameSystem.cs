@@ -15,6 +15,7 @@ namespace Cameo
         public delegate void LevelEventDelegate();
 
         public bool GameMode = true;
+        public bool UseVR = true;
 
         private Dictionary<int, LevelInfo> _levelInfo = new Dictionary<int, LevelInfo>();
 

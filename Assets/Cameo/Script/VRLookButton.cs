@@ -42,6 +42,9 @@ namespace Cameo
 		}
 
 		private void onStopLookAction() {
+            if (_isFinished == true)
+                return;
+
 			ForegroundIcon.sprite = IdleSprite;
 			if(AudioController.isPlaying)
 				AudioController.Stop ();

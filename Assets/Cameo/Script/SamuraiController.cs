@@ -21,9 +21,23 @@ namespace Cameo
 		private Animator _animator;
 
 		// Use this for initialization
-		void Start () {
+		IEnumerator Start () {
 			_audioController = gameObject.GetComponent<AudioSource> ();
 			_animator = gameObject.GetComponent<Animator> ();
+            yield return new WaitForSeconds(5);
+            StartCoroutine(PlayProcess());
+        }
+
+        private IEnumerator PlayProcess()
+        {
+            int i = 0;
+            while(true)
+            {
+                CharacterAction nextAction = Actions[i];
+                yield return StartCoroutine(playAction(nextAction));
+                i = (i + 1) % Actions.Count;
+            }
+            yield return null;
         }
 
 		public void PlayNextAction()
@@ -52,18 +66,6 @@ namespace Cameo
 
             _isPlaying = false;
 
-        }
-
-        void Update()
-        {
-            if (Input.GetKeyUp("space"))
-            {
-                if (_isPlaying)
-                {
-                    Stop();
-                }
-                PlayNextAction();
-            }
         }
 	}
 }

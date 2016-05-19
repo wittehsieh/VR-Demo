@@ -76,11 +76,11 @@
      <Compile Include="Assets\Cameo\Script\ChangeScene.cs" />
      <Compile Include="Assets\Cameo\Script\EffectHandler.cs" />
      <Compile Include="Assets\Cameo\Script\Enemy.cs" />
-     <Compile Include="Assets\Cameo\Script\EnemyManager.cs" />
      <Compile Include="Assets\Cameo\Script\FadeHelper.cs" />
      <Compile Include="Assets\Cameo\Script\FadeObjectInOut.cs" />
      <Compile Include="Assets\Cameo\Script\GameSystem.cs" />
      <Compile Include="Assets\Cameo\Script\IKController.cs" />
+     <Compile Include="Assets\Cameo\Script\PlatformSwitcher.cs" />
      <Compile Include="Assets\Cameo\Script\SamuraiController.cs" />
      <Compile Include="Assets\Cameo\Script\SceneFlowManager.cs" />
      <Compile Include="Assets\Cameo\Script\Singleton.cs" />

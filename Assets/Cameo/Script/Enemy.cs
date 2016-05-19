@@ -12,7 +12,7 @@ namespace Cameo
         public GameObject Model;
 
         public AudioClip Appear;
-        public AudioClip Dead;
+        public AudioClip[] Dead;
 
         private AudioSource _audioController;
         private Transform _target;
@@ -26,7 +26,7 @@ namespace Cameo
 
             _audioController = GetComponent<AudioSource>();
             _fadeObjectHelper = Model.GetComponent<FadeObjectInOut>();
-            GameObject targetObj = GameObject.Find("VRRayCaster");
+            GameObject targetObj = GameObject.Find("Camera");
             if (targetObj != null)
             {
                 _target = targetObj.transform;
@@ -78,7 +78,16 @@ namespace Cameo
             CastEffectFactory.CreateFlyEffect(0, _target.position, HitPoint.transform, 1);
             yield return new WaitForSeconds(1);
             _fadeObjectHelper.FadeOut();
-            yield return new WaitForSeconds(1f);
+
+            yield return new WaitForSeconds(1);
+
+            if(Dead.Length > 0)
+            {
+                AudioClip clip = Dead[Random.Range(0, Dead.Length)];
+                _audioController.clip = clip;
+                _audioController.Play();
+                yield return new WaitForSeconds(_audioController.clip.length);
+            }
 
             GameSystem.Instance.OnLevelEnemyHit(Level);
 
