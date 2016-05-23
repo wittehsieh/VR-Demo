@@ -143,9 +143,9 @@ GameObject:
   m_Component:
   - 224: {fileID: 22469882}
   - 95: {fileID: 9512852}
-  - 135: {fileID: 13500812}
   - 82: {fileID: 8259746}
   - 114: {fileID: 11411182}
+  - 136: {fileID: 13645008}
   m_Layer: 5
   m_Name: VREnemyTarget
   m_TagString: Untagged
@@ -1059,8 +1059,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadTime: 1.5
---- !u!135 &13500812
-SphereCollider:
+--- !u!136 &13645008
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1068,8 +1068,9 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.2
+  m_Height: 3.5
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19812272
 ParticleSystem:
