@@ -47,6 +47,9 @@ namespace Cameo
                     FlyEffect.SetActive(false);
                     HitEffect.SetActive(true);
 
+					transform.position = _to.position;
+					transform.rotation = _to.rotation;
+
                     if (HitClip != null)
                     {
                         AudioController.clip = HitClip;

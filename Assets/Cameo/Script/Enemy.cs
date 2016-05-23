@@ -10,6 +10,8 @@ namespace Cameo
         
         public GameObject HitPoint;
         public GameObject Model;
+		public GameObject BurnEffect;
+		public GameObject DeadEffect;
 
         public AudioClip Appear;
         public AudioClip[] Dead;
@@ -22,6 +24,8 @@ namespace Cameo
         {
             GameSystem.Instance.RegisterEnemy(Level, this);
             HitTrigger.gameObject.SetActive(false);
+			BurnEffect.gameObject.SetActive (false);
+			DeadEffect.gameObject.SetActive (false);
             Model.SetActive(false);
 
             _audioController = GetComponent<AudioSource>();
@@ -59,6 +63,8 @@ namespace Cameo
             yield return new WaitForSeconds(Random.Range(0, 4));
 
             Model.SetActive(true);
+			BurnEffect.gameObject.SetActive (true);
+
             _fadeObjectHelper.FadeIn();
             if(Appear != null)
             {
@@ -76,9 +82,9 @@ namespace Cameo
             GameObject.Destroy(HitTrigger.gameObject);
 
             CastEffectFactory.CreateFlyEffect(0, _target.position, HitPoint.transform, 1);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
             _fadeObjectHelper.FadeOut();
-
+			DeadEffect.gameObject.SetActive (true);
             yield return new WaitForSeconds(1);
 
             if(Dead.Length > 0)
@@ -86,7 +92,7 @@ namespace Cameo
                 AudioClip clip = Dead[Random.Range(0, Dead.Length)];
                 _audioController.clip = clip;
                 _audioController.Play();
-                yield return new WaitForSeconds(_audioController.clip.length);
+                yield return new WaitForSeconds(3);
             }
 
             GameSystem.Instance.OnLevelEnemyHit(Level);
