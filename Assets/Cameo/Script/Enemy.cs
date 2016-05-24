@@ -7,7 +7,8 @@ namespace Cameo
     {
         public int Level = 0;
         public VREnemyHitTrigger HitTrigger;
-        
+        public Animator EnemyAnimator;
+
         public GameObject HitPoint;
         public GameObject Model;
 		public GameObject BurnEffect;
@@ -43,7 +44,7 @@ namespace Cameo
         {
             if (_target != null)
             {
-                transform.LookAt(_target);
+                transform.forward = _target.position - transform.position;
             }
         }
 
@@ -73,6 +74,7 @@ namespace Cameo
             }
             
             yield return new WaitForSeconds(1);
+            EnemyAnimator.SetTrigger("Idle");
             HitTrigger.gameObject.SetActive(true);
             HitTrigger.OnHitCallback += OnHit;
         }
@@ -82,10 +84,12 @@ namespace Cameo
             GameObject.Destroy(HitTrigger.gameObject);
 
             CastEffectFactory.CreateFlyEffect(0, _target.position, HitPoint.transform, 1);
+            
             yield return new WaitForSeconds(1f);
+            EnemyAnimator.SetTrigger("Die");
+            yield return new WaitForSeconds(0.5f);
             _fadeObjectHelper.FadeOut();
-			DeadEffect.gameObject.SetActive (true);
-            yield return new WaitForSeconds(1);
+            DeadEffect.gameObject.SetActive (true);
 
             if(Dead.Length > 0)
             {

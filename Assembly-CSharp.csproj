@@ -90,6 +90,7 @@
      <Compile Include="Assets\Cameo\Script\VRLookButton.cs" />
      <Compile Include="Assets\Cameo\Script\VRRayCaster.cs" />
      <Compile Include="Assets\Cameo\Script\VRStartButton.cs" />
+     <Compile Include="Assets\DessertCameraAudio.cs" />
      <Compile Include="Assets\SpaceUnity\Scripts\SU_Asteroid.cs" />
      <Compile Include="Assets\SpaceUnity\Scripts\SU_AsteroidField.cs" />
      <Compile Include="Assets\SpaceUnity\Scripts\SU_Moon.cs" />
